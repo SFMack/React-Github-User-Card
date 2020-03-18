@@ -6,23 +6,15 @@ export default function Card(props) {
 
 	return (
 		<div className='card-wrapper'>
-			<div>Login</div>
+			{state ? (
+				<>
+					<div>Login: {state.login}</div>
+					<div>Location: {state.location}</div>
+					<div>Bio: {state.bio} </div>
+					<div>Follower: {state.followers}</div>
+					<div>Following: {state.following}</div>
+				</>
+			) : null}
 		</div>
 	);
 }
-
-// export default class Card extends Component {
-// 	constructor() {
-// 		super();
-// 		this.state = {};
-// 	}
-
-// 	render() {
-// 		const { state } = this.props;
-// 		console.log(state);
-
-// 		return (
-
-// 		);
-// 	}
-// }
