@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Card(props) {
 	const { state, followers } = props;
-	console.log(state);
+	console.log(typeof followers);
 
 	return (
 		<div className='card-wrapper'>
@@ -17,18 +17,19 @@ export default function Card(props) {
 					</>
 				) : null}
 			</div>
+
 			<div>
-				{followers
-					? followers.map(user => {
+				{/* {followers
+					? followers.map(follower => {
 							<div>
-								<div>Login: {user.login}</div>
-								<div>Location: {user.location}</div>
-								<div>Bio: {user.bio}</div>
-								<div>Followers: {user.followers}</div>
-								<div>Following: {user.following}</div>
+								<div>Login: {follower.login}</div>
+								<div>Location: {follower.location}</div>
+								<div>Bio: {follower.bio}</div>
+								<div>Followers: {follower.followers}</div>
+								<div>Following: {follower.following}</div>
 							</div>;
 					  })
-					: null}
+					: null} */}
 			</div>
 		</div>
 	);

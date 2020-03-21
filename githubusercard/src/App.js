@@ -10,34 +10,32 @@ export default class App extends Component {
 	}
 
 	componentDidMount = () => {
-		axios
-			.get('https://api.github.com/users/SFMack')
-			.then(response => {
-				this.setState({
-					data: response.data
-				});
-			})
-			.catch(error => {
-				console.log('ERROR:: ', error);
-			});
+		let getMyData = 'https://api.github.com/users/SFMack';
+		let getMyFollowers = 'https://api.github.com/users/SFMack/followers';
+
+		let dataRequest = axios.get(getMyData);
+		let followersRequest = axios.get(getMyFollowers);
 
 		axios
-			.get('https://api.github.com/users/SFMack/followers')
-			.then(response => {
-				this.setState({
-					followers: response.data
-				});
-			})
+			.all([dataRequest, followersRequest])
+			.then(
+				axios.spread((...responses) => {
+					const responseOne = responses[0];
+					const responseTwo = responses[1];
+
+					this.setState({
+						data: responseOne.data,
+						followers: responseTwo.data
+					});
+				})
+			)
 			.catch(error => {
-				console.log('ERROR:: ', error);
+				console.log('ERROR: ', error);
 			});
 	};
 
 	render() {
-		const { data } = this.state;
-		const { followers } = this.state;
-
-		console.log(followers);
+		const { data, followers } = this.state;
 
 		return (
 			<div className='App'>
