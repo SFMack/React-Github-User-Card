@@ -1,0 +1,9 @@
+{
+	"short_name": "GH Card",
+	"name": "Github User Card",
+	"icons": [],
+	"start_url": ".",
+	"display": "standalone",
+	"theme_color": "#000000",
+	"background_color": "#ffffff"
+}
